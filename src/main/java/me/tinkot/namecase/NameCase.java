@@ -16,10 +16,10 @@ public class NameCase extends Plugin implements Listener {
 	public void onEnable() {
 		config = new Config(this);
 		getProxy().getPluginManager().registerListener(this, new LoginEventListener(config, this));
-		getLogger().info("Hello world.");
-		getLogger().info("IllegalNameCase已运行");
-		getLogger().info("作者：Tinkot，删减者：小狗");
-		getLogger().info("原版https://www.spigotmc.org/resources/namecase.62586/");
+		getLogger().info("§aHello world.");
+		getLogger().info("§aIllegalNameCase已运行");
+		getLogger().info("§a作者：Tinkot，删减者：小狗");
+		getLogger().info("§a原版https://www.spigotmc.org/resources/namecase.62586/");
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBC());
 	}
 

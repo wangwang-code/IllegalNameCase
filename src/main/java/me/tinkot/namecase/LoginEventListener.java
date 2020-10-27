@@ -41,7 +41,7 @@ public class LoginEventListener implements Listener {
 				String message;
 				if (reason == Case.ILLEGAL) {
 					message = config.getString("ILLEGAL_CHARS");
-					plugin.getLogger().info("玩家["+loginName+"]因带有非法字符而被踢出");
+					plugin.getLogger().info("§a玩家["+loginName+"]因带有非法字符而被踢出");
 				} else {
 					message = "unknown";
 
