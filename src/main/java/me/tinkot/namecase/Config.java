@@ -18,7 +18,7 @@ public class Config {
 	private String pluginFolder;
 
 	/**
-	 * Creating new instance of the config file.
+	 *  创建配置文件的新实例。
 	 * @throws IOException
 	 * @param plugin
 	 */
@@ -35,7 +35,7 @@ public class Config {
 
 
 	/**
-	 * Create folder when it does not exists
+	 *  不存在时创建文件夹
 	 */
 	private void folderParenting() {
 		File folder = new File(pluginFolder);
@@ -46,7 +46,7 @@ public class Config {
 	}
 
 	/**
-	 * Create config when it does  exists
+	 *  当它文件夹存在时创建配置
 	 *
 	 * @throws IOException
 	 */
@@ -59,7 +59,7 @@ public class Config {
 	}
 
 	/**
-	 * Set the target configuration file for this Config instance
+	 *  为这个Config实例设置目标配置文件
 	 *
 	 * @param file
 	 * @throws IOException
@@ -69,7 +69,7 @@ public class Config {
 	}
 
 	/**
-	 * Get the absolute path to the plugin's folder
+	 *  获取插件文件夹的绝对路径
 	 *
 	 * @return
 	 */
@@ -79,7 +79,7 @@ public class Config {
 
 
 	/**
-	 * Get string from the config
+	 * 从配置获取...
 	 *
 	 * @param key to data
 	 * @return the string
@@ -89,7 +89,7 @@ public class Config {
 	}
 
 	/**
-	 * Get int from the config
+	 *  从配置中获取int
 	 *
 	 * @param key to data
 	 * @return the int
