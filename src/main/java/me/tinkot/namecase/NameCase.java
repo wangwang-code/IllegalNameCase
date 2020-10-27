@@ -2,6 +2,7 @@ package me.tinkot.namecase;
 
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.api.ProxyServer;
 
 public class NameCase extends Plugin implements Listener {
 	private static Config config;
@@ -14,6 +15,7 @@ public class NameCase extends Plugin implements Listener {
 		getLogger().info("IllegalNameCase已运行");
 		getLogger().info("作者：Tinkot，删减者：小狗");
 		getLogger().info("原版https://www.spigotmc.org/resources/namecase.62586/");
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBC());
 	}
 
 
