@@ -15,7 +15,7 @@ public class LoginEventListener implements Listener {
 	}
 
 	private static final Case DEFAULT_CASE = Case.PASSED;
-	private Config config;
+	static public Config config;
 	private NameCase plugin;
 
 	LoginEventListener(Config config, NameCase plugin) {

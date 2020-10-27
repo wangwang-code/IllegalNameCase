@@ -5,6 +5,11 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.ProxyServer;
 
 public class NameCase extends Plugin implements Listener {
+    static NameCase instance;
+    {
+        instance=this;
+    }
+
 	private static Config config;
 
 	@Override

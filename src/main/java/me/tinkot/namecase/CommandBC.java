@@ -9,7 +9,9 @@ public class CommandBC extends Command {
         super("IllegalNameCase");
     }
 
-    public void execute(CommandSender sender, String[] args) {
+    public void execute(CommandSender sender, String[] args)
+    {
+        LoginEventListener.config=new Config(NameCase.instance);
     }
 
 }
