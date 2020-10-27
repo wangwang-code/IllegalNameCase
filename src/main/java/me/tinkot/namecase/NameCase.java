@@ -22,8 +22,6 @@ public class NameCase extends Plugin implements Listener {
 		getLogger().info("§a原版https://www.spigotmc.org/resources/namecase.62586/");
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBC());
 	}
-
-
 	public static Config getConfig() {
 		return config;
 	}
