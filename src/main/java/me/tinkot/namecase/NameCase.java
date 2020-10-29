@@ -25,4 +25,5 @@ public class NameCase extends Plugin implements Listener {
 	public static Config getConfig() {
 		return config;
 	}
+    public void onDisable() { getLogger().info("§aIllegalNameCase已卸载"); }
 }

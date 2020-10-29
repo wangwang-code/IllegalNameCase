@@ -33,15 +33,16 @@ public class LoginEventListener implements Listener {
 
 			String loginName = event.getConnection().getName();
 
+			//String 正则表达式 = config.getString("名称限制"); //尝试 已废弃
 
-			if (!loginName.matches("[a-zA-Z0-9_-]*")) {
+			if (!loginName.matches(config.getString("名称限制"))) {
 				reason = Case.ILLEGAL;
 			}
 
 			if (reason != Case.PASSED) {
 				String message;
 				if (reason == Case.ILLEGAL) {
-					message = config.getString("ILLEGAL_CHARS");
+					message = config.getString("踢出消息");
 					plugin.getLogger().info("§a玩家["+loginName+"]因带有非法字符而被踢出");
 				} else {
 					message = "unknown";
