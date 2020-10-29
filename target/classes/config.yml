@@ -1,4 +1,4 @@
 #原版 https://www.spigotmc.org/resources/namecase.62586/
 #小狗删减
 
-ILLEGAL_CHARS: '&c含有非法字符，只允许字母和数字；正则：[a-zA-Z0-9_]*'
+ILLEGAL_CHARS: '&c含有非法字符，只允许字母和数字；正则：[a-zA-Z0-9_-]*'

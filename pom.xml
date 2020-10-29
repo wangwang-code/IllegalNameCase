@@ -4,7 +4,7 @@
 
   <groupId>me.tinkot.namecase</groupId>
   <artifactId>NameCase</artifactId>
-  <version>2.0</version>
+  <version>3.3</version>
   <packaging>jar</packaging>
 
   <name>illegalNameCase</name>
