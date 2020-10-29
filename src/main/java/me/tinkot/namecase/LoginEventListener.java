@@ -21,6 +21,7 @@ public class LoginEventListener implements Listener {
 	LoginEventListener(Config config, NameCase plugin) {
 		this.config = config;
 		this.plugin = plugin;
+
 	}
 
 	@EventHandler(priority = EventPriority.LOW)
@@ -33,7 +34,7 @@ public class LoginEventListener implements Listener {
 			String loginName = event.getConnection().getName();
 
 
-			if (!loginName.matches("[a-zA-Z0-9_]*")) {
+			if (!loginName.matches("[a-zA-Z0-9_-]*")) {
 				reason = Case.ILLEGAL;
 			}
 
@@ -54,4 +55,5 @@ public class LoginEventListener implements Listener {
 			event.completeIntent(plugin);
 		});
 	}
+
 }
