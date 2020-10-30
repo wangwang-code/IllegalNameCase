@@ -21,6 +21,8 @@ public class NameCase extends Plugin implements Listener {
 		getLogger().info("§a作者：Tinkot，删减者：小狗");
 		getLogger().info("§a原版https://www.spigotmc.org/resources/namecase.62586/");
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBC());
+        String 插件版本 = "3.6";String 配置文件版本 = config.getString("配置文件版本");
+        getLogger().info("§a插件版本："+插件版本+"  §a配置文件版本："+配置文件版本);
 	}
 	public static Config getConfig() {
 		return config;

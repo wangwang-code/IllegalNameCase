@@ -22,6 +22,7 @@ public class LoginEventListener implements Listener {
 		this.config = config;
 		this.plugin = plugin;
 
+
 	}
 
 	@EventHandler(priority = EventPriority.LOW)
