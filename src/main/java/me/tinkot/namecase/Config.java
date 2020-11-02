@@ -13,21 +13,27 @@ import net.md_5.bungee.config.YamlConfiguration;
  * @author tjeerdvandijk
  */
 public class Config {
+	public static String version = "3.7";
 	private Configuration configuration;
 	private me.tinkot.namecase.NameCase plugin;
 	private String pluginFolder;
+
 
 	/**
 	 *  创建配置文件的新实例。
 	 * @throws IOException
 	 * @param plugin
 	 */
-	Config(NameCase plugin) {
+	public Config(NameCase plugin) {
 		try {
 			this.plugin  = plugin;
 			pluginFolder = plugin.getDataFolder().getAbsolutePath();
 			folderParenting();
 			configParenting();
+			if(!getString("配置文件版本").equals(Config.version))
+			{
+				plugin.getLogger().warning("§4配置文件不匹配，请删除");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +91,11 @@ public class Config {
 	 * @return the string
 	 */
 	public String getString(String key) {
-		return configuration.getString(key);
+		Object value=configuration.get(key);
+		if(value!=null)
+			return value.toString();
+		else
+			return null;
 	}
 
 	/**
