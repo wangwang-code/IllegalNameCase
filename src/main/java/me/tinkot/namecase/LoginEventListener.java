@@ -15,20 +15,14 @@ public class LoginEventListener implements Listener {
 	}
 
 	private static final Case DEFAULT_CASE = Case.PASSED;
-	static public Config config;
-	private NameCase plugin;
 
-	LoginEventListener(Config config, NameCase plugin) {
-		this.config = config;
-		this.plugin = plugin;
-
-
+	LoginEventListener(NameCase plugin) {
 	}
 
 	@EventHandler(priority = EventPriority.LOW)
 	public void onPlayerLogin(final PreLoginEvent event) {
-		event.registerIntent(plugin);
-		ProxyServer.getInstance().getScheduler().runAsync(plugin, () -> {
+		event.registerIntent(NameCase.instance);
+		ProxyServer.getInstance().getScheduler().runAsync(NameCase.instance, () -> {
 
 			Case reason = DEFAULT_CASE;
 
@@ -36,15 +30,15 @@ public class LoginEventListener implements Listener {
 
 			//String 正则表达式 = config.getString("名称限制"); //尝试 已废弃
 
-			if (!loginName.matches(config.getString("名称限制"))) {
+			if (!loginName.matches(Config.getString("名称限制"))) {
 				reason = Case.ILLEGAL;
 			}
 
 			if (reason != Case.PASSED) {
 				String message;
 				if (reason == Case.ILLEGAL) {
-					message = config.getString("踢出消息");
-					plugin.getLogger().info("§a玩家["+loginName+"]因带有非法字符而被踢出");
+					message = Config.getString("踢出消息");
+					NameCase.instance.getLogger().info("§a玩家["+loginName+"]因带有非法字符而被踢出");
 				} else {
 					message = "unknown";
 
@@ -54,7 +48,7 @@ public class LoginEventListener implements Listener {
 				event.setCancelReason(new TextComponent(ChatColor.translateAlternateColorCodes('&', message)));
 				event.setCancelled(true);
 			}
-			event.completeIntent(plugin);
+			event.completeIntent(NameCase.instance);
 		});
 	}
 

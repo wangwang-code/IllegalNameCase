@@ -12,27 +12,29 @@ import net.md_5.bungee.config.YamlConfiguration;
 /**
  * @author tjeerdvandijk
  */
-public class Config {
-	public static String version = "3.7";
-	private Configuration configuration;
-	private me.tinkot.namecase.NameCase plugin;
-	private String pluginFolder;
+final public class Config {
+	public static String version = "3.8";
+	private static Configuration configuration;
+	private static String pluginFolder;
 
 
 	/**
 	 *  创建配置文件的新实例。
 	 * @throws IOException
-	 * @param plugin
 	 */
-	public Config(NameCase plugin) {
-		try {
-			this.plugin  = plugin;
-			pluginFolder = plugin.getDataFolder().getAbsolutePath();
+	private Config()
+	{
+	}
+	public static void reload()
+	{
+		try
+		{
+			pluginFolder = NameCase.instance.getDataFolder().getAbsolutePath();
 			folderParenting();
 			configParenting();
 			if(!getString("配置文件版本").equals(Config.version))
 			{
-				plugin.getLogger().warning("§4配置文件不匹配，请删除");
+				NameCase.instance.getLogger().warning("§4配置文件版本不匹配，请删除");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -43,7 +45,7 @@ public class Config {
 	/**
 	 *  不存在时创建文件夹
 	 */
-	private void folderParenting() {
+	private static void folderParenting() {
 		File folder = new File(pluginFolder);
 		if (!folder.exists()) {
 			folder.mkdir();
@@ -56,10 +58,10 @@ public class Config {
 	 *
 	 * @throws IOException
 	 */
-	private void configParenting() throws IOException {
+	private static void configParenting() throws IOException {
 		File file = new File(pluginFolder, "config.yml");
 		if (!file.exists()) {
-			Files.copy(plugin.getResourceAsStream("config.yml"), file.toPath());
+			Files.copy(NameCase.instance.getResourceAsStream("config.yml"), file.toPath());
 		}
 		setTargetFile(file);
 	}
@@ -70,7 +72,7 @@ public class Config {
 	 * @param file
 	 * @throws IOException
 	 */
-	private void setTargetFile(File file) throws IOException {
+	private static void setTargetFile(File file) throws IOException {
 		configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 	}
 
@@ -79,7 +81,7 @@ public class Config {
 	 *
 	 * @return
 	 */
-	public String getAbsolutePluginFolder() {
+	public static String getAbsolutePluginFolder() {
 		return pluginFolder;
 	}
 
@@ -90,7 +92,7 @@ public class Config {
 	 * @param key to data
 	 * @return the string
 	 */
-	public String getString(String key) {
+	static public String getString(String key) {
 		Object value=configuration.get(key);
 		if(value!=null)
 			return value.toString();
@@ -104,7 +106,7 @@ public class Config {
 	 * @param key to data
 	 * @return the int
 	 */
-	public Integer getInt(String key) {
+	public static Integer getInt(String key) {
 		return configuration.getInt(key);
 	}
 
